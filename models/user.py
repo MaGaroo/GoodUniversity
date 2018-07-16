@@ -8,7 +8,8 @@ class User(object):
         "Manager",
     )
 
-    def __init__(self, username=None, serial=None, password=None, email=None, phone_number=None, role=None):
+    def __init__(self, username=None, serial=None, password=None, email=None, phone_number=None, role=None,
+                 verified=False):
         self.username = username
         self.serial = serial
         self.password = password
@@ -16,6 +17,7 @@ class User(object):
         self.phone_number = phone_number
         self.role = role
         self.state = "/"
+        self.verified = verified
 
     def is_valid(self, instance_list):
         if type(self.username) != str:
@@ -27,6 +29,8 @@ class User(object):
         if type(self.email) != str:
             return False
         if type(self.phone_number) != str:
+            return False
+        if type(self.verified) != bool:
             return False
 
         if not self.username and not self.serial:
