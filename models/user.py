@@ -1,3 +1,6 @@
+from states import state_list
+
+
 class User(object):
     ROLES = (
         "Student",
@@ -12,6 +15,7 @@ class User(object):
         self.email = email
         self.phone_number = phone_number
         self.role = role
+        self.state = "/"
 
     def is_valid(self, instance_list):
         if type(self.username) != str:
@@ -45,6 +49,9 @@ class User(object):
                     return False
 
         if self.role not in self.ROLES:
+            return False
+
+        if self.state not in state_list:
             return False
 
         return True

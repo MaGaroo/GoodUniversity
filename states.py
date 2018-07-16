@@ -1,4 +1,4 @@
-states = {
+state_list = {
 
     "/": None,
     "/login/": None,
