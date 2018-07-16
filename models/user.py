@@ -16,7 +16,6 @@ class User(object):
         self.email = email
         self.phone_number = phone_number
         self.role = role
-        self.state = "/"
         self.verified = verified
 
     def is_valid(self, instance_list):
@@ -53,9 +52,6 @@ class User(object):
                     return False
 
         if self.role not in self.ROLES:
-            return False
-
-        if self.state not in state_list:
             return False
 
         return True
