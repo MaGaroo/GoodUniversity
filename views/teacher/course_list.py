@@ -1,7 +1,7 @@
 from utils import show_messages, choose_from_menu, paginator, pprint_table
 
 
-class StudentCourseListView(object):
+class TeacherCourseListView(object):
 
     def run(self, site, messages=None):
         site.clear()

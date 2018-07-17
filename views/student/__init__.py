@@ -1,4 +1,4 @@
 from .choose_course import ChooseCourseView
-from .course_list import CourseListView
+from .course_list import StudentCourseListView
 from .workbook import WorkbookView
 from .student import StudentView
