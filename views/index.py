@@ -1,4 +1,4 @@
-from utils import choose_from_menu
+from utils import choose_from_menu, show_messages
 
 
 class IndexView(object):
@@ -7,8 +7,10 @@ class IndexView(object):
         "Register": "/register/",
     }
 
-    def run(self, site):
+    def run(self, site, messages=None):
+        site.clear()
         site.print_header()
+        show_messages(messages)
         choice = choose_from_menu(site, self.MENU.keys())
         site.state = self.MENU[choice]
         return 0
