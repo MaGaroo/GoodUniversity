@@ -10,7 +10,7 @@ class CourseRequestsListView(object):
         page_number = 0
         while True:
             pprint_table('Course Requests', course_list[page_number],
-                         foot='Page {} of {}'.format(page_number, len(course_list)))
+                         foot='Page {} of {}'.format(page_number + 1, len(course_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
                 menu.append('Previous Page')
@@ -31,7 +31,7 @@ class CourseRequestsListView(object):
                 if course_row >= len(course_list[page_number]) or course_row < 0:
                     return ['Invalid row number!']
                 if choice == 'Accept':
-                    site.accept_course(course_list[page_number][course_row])
+                    site.accept_course(course_list[page_number][course_row].accept())
                 else:
                     site.reject_course(course_list[page_number][course_row])
                 return ['Operation completed successfully.']

@@ -13,7 +13,7 @@ class BestStudentsView(object):
         page_number = 0
         while True:
             pprint_table('Students', student_list[page_number],
-                         foot='Page {} of {}'.format(page_number, len(student_list)),
+                         foot='Page {} of {}'.format(page_number + 1, len(student_list)),
                          cols_title=['Avg. Score', 'Name', 'Student No.', 'Field'])
             menu = ['Home']
             if page_number - 1 >= 0:

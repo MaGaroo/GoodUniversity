@@ -18,7 +18,7 @@ class AddScoreView(object):
         student = site.get_student(serial=student)
         if student is None:
             return ["No such student!"]
-        elif not site.student_has_course(student, course):
+        elif not student.has_course(course):
             return ["This student has not this course."]
         elif not student.verified:
             return ["This student is not verified yet."]

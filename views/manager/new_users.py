@@ -10,7 +10,7 @@ class NewUsersListView(object):
         page_number = 0
         while True:
             pprint_table('New Users', user_list[page_number],
-                         foot='Page {} of {}'.format(page_number, len(user_list)))
+                         foot='Page {} of {}'.format(page_number + 1, len(user_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
                 menu.append('Previous Page')

@@ -10,7 +10,7 @@ class ChooseCourseView(object):
         page_number = 0
         while True:
             pprint_table('Available Courses', course_list[page_number],
-                         foot='Page {} of {}'.format(page_number, len(course_list)))
+                         foot='Page {} of {}'.format(page_number + 1, len(course_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
                 menu.append('Previous Page')

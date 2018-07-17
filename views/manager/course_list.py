@@ -15,7 +15,7 @@ class ManagerCourseListView(object):
             if page_number + 1 < len(course_list):
                 menu.append('Next Page')
             pprint_table('Courses', course_list[page_number],
-                         foot='Page {} of {}'.format(page_number, len(course_list)))
+                         foot='Page {} of {}'.format(page_number + 1, len(course_list)))
             choice = choose_from_menu(menu)
             if choice == 'Home':
                 site.state = '/manager/'
