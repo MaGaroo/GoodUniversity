@@ -19,7 +19,7 @@ class ChooseCourseView(object):
             menu.append('Select')
             choice = choose_from_menu(menu)
             if choice == 'Home':
-                site.state = '/'
+                site.state = '/student/'
                 break
             elif choice == 'Previous Page':
                 page_number -= 1
