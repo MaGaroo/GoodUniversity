@@ -6,7 +6,7 @@ class StudentsListView(object):
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        student_list = paginator(site.get_available_courses(site.get_active_students()), 20)
+        student_list = paginator(site.get_available_courses(site.get_active_teachers()), 20)
         page_number = 0
         while True:
             pprint_table('Students', student_list[page_number],
@@ -19,7 +19,7 @@ class StudentsListView(object):
             menu.append('Select')
             choice = choose_from_menu(menu)
             if choice == 'Home':
-                site.state = '/manager/'
+                site.state = '/teacher/'
                 break
             elif choice == 'Previous Page':
                 page_number -= 1
