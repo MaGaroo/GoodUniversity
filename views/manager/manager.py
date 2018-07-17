@@ -1,7 +1,7 @@
 from utils import show_messages, choose_from_menu
 
 
-class TeacherView(object):
+class ManagerView(object):
     MENU = {
         'Teachers': '/manager/teachers/',
         'Students': '/manager/students/',
