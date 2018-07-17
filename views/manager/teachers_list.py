@@ -1,12 +1,12 @@
 from utils import show_messages, paginator, choose_from_menu, pprint_table
 
 
-class StudentsListView(object):
+class TeachersListView(object):
 
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        student_list = paginator(site.get_available_courses(site.get_active_teachers()), 20)
+        student_list = paginator(site.get_verified_teachers(), 20)
         page_number = 0
         while True:
             pprint_table('Students', student_list[page_number],

@@ -6,7 +6,7 @@ class CourseRequestsListView(object):
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        course_list = paginator(site.get_unverified_users(site.active_courses), 20)
+        course_list = paginator(site.get_unverified_courses(), 20)
         page_number = 0
         while True:
             pprint_table('Course Requests', course_list[page_number],
