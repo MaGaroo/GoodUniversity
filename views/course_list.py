@@ -6,7 +6,7 @@ class CourseListView(object):
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        course_list = paginator(site.active_user.get_courses(), 20)
+        course_list = paginator(site.active_user.get_current_courses(), 20)
         page_number = 0
         while True:
             menu = {
