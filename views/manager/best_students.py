@@ -12,7 +12,7 @@ class BestStudentsView(object):
         student_list = paginator(student_list, 20)
         page_number = 0
         while True:
-            pprint_table('Students', site.student_list,
+            pprint_table('Students', student_list[page_number],
                          foot='Page {} of {}'.format(page_number, len(student_list)),
                          cols_title=['Avg. Score', 'Name', 'Student No.', 'Field'])
             menu = ['Home']

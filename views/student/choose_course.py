@@ -9,7 +9,7 @@ class ChooseCourseView(object):
         course_list = paginator(site.get_available_courses(site.active_user), 20)
         page_number = 0
         while True:
-            pprint_table('Available Courses', site.get_available_courses(site.active_user),
+            pprint_table('Available Courses', course_list[page_number],
                          foot='Page {} of {}'.format(page_number, len(course_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
