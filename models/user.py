@@ -60,4 +60,8 @@ class User(object):
             self.errors.append('This role does not exist in the system.')
             return False
 
+        if self.role == 'Student' and self.serial is None:
+            self.errors.append('Students must have serial number')
+            return False
+
         return True
