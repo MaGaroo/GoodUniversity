@@ -29,3 +29,4 @@ class BestStudentsView(object):
                 page_number -= 1
             elif choice == 'Next Page':
                 page_number += 1
+        return None
