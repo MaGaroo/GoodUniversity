@@ -11,6 +11,6 @@ class IndexView(object):
         site.clear()
         site.print_header()
         show_messages(messages)
-        choice = choose_from_menu(site, self.MENU.keys())
+        choice = choose_from_menu(self.MENU.keys())
         site.state = self.MENU[choice]
         return 0
