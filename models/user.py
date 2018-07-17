@@ -1,6 +1,3 @@
-from states import state_list
-
-
 class User(object):
     ROLES = (
         "Student",
@@ -17,6 +14,7 @@ class User(object):
         self.phone_number = phone_number
         self.role = role
         self.verified = verified
+        self.errors = []
 
     def is_valid(self, instance_list):
         if type(self.username) != str:
@@ -32,26 +30,34 @@ class User(object):
         if type(self.verified) != bool:
             return False
 
+        self.errors = []
+
         if not self.username and not self.serial:
+            self.errors.append('At least one of the Username and Serial must not be empty.')
             return False
 
         for instance in instance_list:
             if self.username and instance.username == self.username:
+                self.errors.append('This username already exists in the system.')
                 return False
             if self.serial and instance.number == self.serial:
+                self.errors.append('This serial number already exists in the system.')
                 return False
 
         if self.phone_number:
             for d in self.phone_number:
                 if d not in '0123456789':
+                    self.errors.append('The phone number must contain only digits.')
                     return False
 
         if self.serial:
             for d in self.serial:
                 if d not in '0123456789':
+                    self.errors.append('The serial number must contain only digits.')
                     return False
 
         if self.role not in self.ROLES:
+            self.errors.append('This role does not exist in the system.')
             return False
 
         return True
