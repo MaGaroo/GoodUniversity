@@ -6,7 +6,7 @@ class StudentsListView(object):
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        student_list = paginator(site.get_available_courses(site.active_user), 20)
+        student_list = paginator(site.get_available_courses(site.get_active_students()), 20)
         page_number = 0
         while True:
             pprint_table('Students', student_list[page_number],
