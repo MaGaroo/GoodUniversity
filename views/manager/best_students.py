@@ -6,7 +6,7 @@ class BestStudentsView(object):
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        student_list = [(student.average_score(), student) for student in site.get_verified_students()]
+        student_list = [(student.get_average_score(), student) for student in site.get_verified_students()]
         student_list.sort()
         student_list = [[t[0], t[1].name, t[1].serial, t[1].field] for t in student_list]
         student_list = paginator(student_list, 20)

@@ -69,3 +69,9 @@ class User(object):
             return False
 
         return True
+
+    def get_average_score(self):
+        pass
+
+    def get_scores(self):
+        pass
