@@ -1,4 +1,6 @@
+import binascii
 import getpass
+import os
 
 
 def center(s, length):
@@ -134,3 +136,7 @@ def paginator(array, per_page):
         result.append(array[left:min(len(array), left + per_page)])
         left += per_page
     return result
+
+
+def random_string(length):
+    print(binascii.b2a_hex(os.urandom(length)))
