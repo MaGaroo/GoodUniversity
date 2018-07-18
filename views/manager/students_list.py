@@ -19,8 +19,6 @@ class StudentsListView(object):
                 menu.append('Previous Page')
             if page_number + 1 < len(student_list):
                 menu.append('Next Page')
-            if len(student_list) > 0:
-                menu.append('Select')
             choice = choose_from_menu(menu)
             if choice == 'Home':
                 site.state = '/manager/'
