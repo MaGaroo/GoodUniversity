@@ -7,7 +7,7 @@ class Course(object):
         self.serial = serial
         self.title = title
         self.verified = verified
-        self.owner = owner.pk
+        self.owner = owner
         self.errors = None
 
     def is_valid(self, instance_list):
