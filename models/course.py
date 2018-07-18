@@ -1,9 +1,8 @@
-class Course(object):
-    count = 0
+from models.user import User
 
+
+class Course(object):
     def __init__(self, serial, title, owner, verified=False):
-        self.pk = Course.count
-        Course.count += 1
         self.serial = serial
         self.title = title
         self.verified = verified
@@ -11,4 +10,14 @@ class Course(object):
         self.errors = None
 
     def is_valid(self, instance_list):
-        pass
+        self.errors = []
+        if self.serial is None:
+            self.errors.append('Serial must not be empty.')
+            return False
+        if self.title is None:
+            self.errors.append('Title must not be empty.')
+            return False
+        if self.owner is None or type(self.owner) != User or self.owner.role != "Teacher":
+            self.errors.append('The course must have an owner with teacher role.')
+            return False
+        return True

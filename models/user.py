@@ -1,6 +1,4 @@
 class User(object):
-    count = 0
-
     ROLES = (
         "Student",
         "Teacher",
@@ -9,8 +7,6 @@ class User(object):
 
     def __init__(self, username=None, serial=None, name=None, password=None, email=None, field=None, phone_number=None,
                  role=None, verified=False):
-        self.pk = User.count
-        User.count += 1
         self.username = username
         self.serial = serial
         self.name = name
