@@ -8,7 +8,6 @@ class RegisterView(object):
         site.print_header()
         show_messages(messages)
         username = get_input('Username(left blank if you want): ', null=True)
-        # TODO: change blank into null
         serial = get_input('Serial Number(left blank if you want): ', null=True)
         name = get_input('Name: ')
         field = get_input('Field: ')
