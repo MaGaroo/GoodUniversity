@@ -10,6 +10,8 @@ from views.register import RegisterView
 from views.student import StudentView, StudentCourseListView, WorkbookView, ChooseCourseView, AssessmentView
 from views.teacher import TeacherView, TeacherCourseListView, StudentsListView, CourseRequestView, AddScoreView
 
+# its a dictionary from all situation that users may have in the system to
+# the view classes that must handle each of them
 state_list = {
 
     "/": IndexView,

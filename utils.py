@@ -1,8 +1,8 @@
-import binascii
+# in this file we create some functions that may be commonly used in different parts of the project
 import getpass
-import os
 
 
+# return a string with the given length that has s in its middle and almost equal number of spaces around it
 def center(s, length):
     diff = length - len(str(s))
     left_len = diff // 2
@@ -10,6 +10,7 @@ def center(s, length):
     return '{}{}{}'.format(' ' * left_len, s, ' ' * right_len)
 
 
+# given the length of each cell of a table row, return the string that separates rows from each other
 def row_separator(lens):
     result = '+'
     for length in lens:
@@ -18,6 +19,7 @@ def row_separator(lens):
     return result
 
 
+# given the values of each cell of a specific row and length of each row, return the string of whole row
 def get_row_string(row, lens):
     result = '|'
     for i, word in enumerate(row):
@@ -26,20 +28,26 @@ def get_row_string(row, lens):
     return result
 
 
+# print a table in a pretty manner
 def pprint_table(head, rows, foot=None, cols_title=None):
+    # cast rows objects to list
     if type(rows[0]) != list:
         if cols_title is None:
             cols_title = rows[0].get_columns_title()
         for i in range(len(rows)):
             rows[i] = rows[i].as_list()
 
+    # add row number column to the table
     if cols_title[0] != '#':
         cols_title = ['#'] + cols_title
         for i in range(len(rows)):
             rows[i] = [i + 1] + rows[i]
 
+    # add title to the top of rows objects
     rows = [cols_title] + rows
 
+    # calculate length of each cell in different columns and
+    # length of the header and footer parts of the table
     max_len = [0] * len(rows[0])
     for row in rows:
         for i, word in enumerate(row):
@@ -53,8 +61,11 @@ def pprint_table(head, rows, foot=None, cols_title=None):
             max_len[-1] += 1
 
     head_len = sum(max_len) + len(max_len) - 1
+
+    # find the string that separates rows from each other
     current_row_separator = row_separator(max_len)
 
+    # print table
     print('+{}+'.format('-' * head_len))
     print('|{}|'.format(center(head, head_len)))
     print(current_row_separator)
@@ -69,6 +80,7 @@ def pprint_table(head, rows, foot=None, cols_title=None):
     return
 
 
+# given a menu, force user to choose one of its items
 def choose_from_menu(menu, message=None):
     if message is None:
         message = 'Please enter your choice number: '
@@ -90,6 +102,8 @@ def choose_from_menu(menu, message=None):
             return menu[choice]
 
 
+# read something from input, with request message equal to 'message' and output_type type!
+# if null equals True, the input may be blank and None will be returned
 def get_input(message, output_type=str, null=False):
     while True:
         result = input(message)
@@ -105,6 +119,8 @@ def get_input(message, output_type=str, null=False):
             print("Invalid input!")
 
 
+# it acts exactly like get_input function, but user can't see what characters he has entered
+# it can be used to read password
 def get_secret_input(message, output_type=str, null=False):
     while True:
         result = getpass.getpass(prompt=message)
@@ -120,6 +136,7 @@ def get_secret_input(message, output_type=str, null=False):
             print("Invalid input!")
 
 
+# prints system messages and notifications
 def show_messages(message_list):
     if message_list is None:
         return
@@ -129,6 +146,7 @@ def show_messages(message_list):
     print()
 
 
+# slices the array into consecutive parts with length equal to per_page (note: except the last piece)
 def paginator(array, per_page):
     result = []
     left = 0
@@ -136,7 +154,3 @@ def paginator(array, per_page):
         result.append(array[left:min(len(array), left + per_page)])
         left += per_page
     return result
-
-
-def random_string(length):
-    print(binascii.b2a_hex(os.urandom(length)))
