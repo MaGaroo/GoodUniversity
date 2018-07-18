@@ -1,30 +1,43 @@
+from views.change_password import ChangePasswordView
+from views.index import IndexView
+from views.login import LoginView
+from views.logout import LogoutView
+from views.manager import ManagerView, TeachersListView, ManagerCourseListView, CourseRequestsListView, \
+    NewUsersListView, BestStudentsView
+from views.manager import StudentsListView as ManagerStudentsListView
+from views.register import RegisterView
+from views.student import StudentView, StudentCourseListView, WorkbookView, ChooseCourseView
+from views.teacher import TeacherView, TeacherCourseListView, StudentsListView, CourseRequestView, AddScoreView
+
 state_list = {
 
-    "/": None,
-    "/login/": None,
-    "/register/": None,
-    "/edit_profile/": None,
-    "/edit_password/": None,
-    "/logout/": None,
+    "/": IndexView,
+    "/login/": LoginView,
+    "/register/": RegisterView,
+    "/change_password/": ChangePasswordView,
+    "/logout/": LogoutView,
 
-    "/student/": None,
-    "/student/courses/": None,
-    "/student/workbook/": None,
-    "/student/choose_course/": None,
+    "/student/": StudentView,
+    "/student/courses/": StudentCourseListView,
+    "/student/workbook/": WorkbookView,
+    "/student/choose_course/": ChooseCourseView,
     "/student/assessment/": None,
+    "/student/edit_profile/": None,
 
-    "/teacher/": None,
-    "/teacher/courses/": None,
-    "/teacher/students/": None,
-    "/teacher/course_request/": None,
-    "/teacher/scores/": None,
+    "/teacher/": TeacherView,
+    "/teacher/courses/": TeacherCourseListView,
+    "/teacher/students/": StudentsListView,
+    "/teacher/course_request/": CourseRequestView,
+    "/teacher/scores/": AddScoreView,
+    "/teacher/edit_profile/": None,
 
-    "/manager/": None,
-    "/manager/teachers/": None,
-    "/manager/students/": None,
-    "/manager/courses/": None,
-    "/manager/course_requests/": None,
-    "/manager/new_users/": None,
-    "/manager/best_students/": None,
+    "/manager/": ManagerView,
+    "/manager/teachers/": TeachersListView,
+    "/manager/students/": ManagerStudentsListView,
+    "/manager/courses/": ManagerCourseListView,
+    "/manager/course_requests/": CourseRequestsListView,
+    "/manager/new_users/": NewUsersListView,
+    "/manager/best_students/": BestStudentsView,
+    "/manager/edit_profile/": None,
 
 }
