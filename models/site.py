@@ -119,3 +119,9 @@ class Site(object):
             if not self.active_user.has_course(course):
                 result.append(course)
         return result
+
+    def get_course(self, serial):
+        for course in self.course_list:
+            if course.serial == serial:
+                return course
+        return None
