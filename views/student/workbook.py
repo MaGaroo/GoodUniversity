@@ -1,6 +1,7 @@
 from utils import show_messages, choose_from_menu, paginator, pprint_table
 
 
+# prints workbook of the student
 class WorkbookView(object):
 
     def run(self, site, messages=None):

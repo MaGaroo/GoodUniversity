@@ -1,6 +1,7 @@
 from utils import show_messages, paginator, choose_from_menu, pprint_table
 
 
+# runs when the manager wants to see the students with highest average scores
 class BestStudentsView(object):
 
     def run(self, site, messages=None):

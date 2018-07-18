@@ -1,6 +1,7 @@
 from utils import show_messages, get_input
 
 
+# lets the teachers to add a score for a student of a course
 class AddScoreView(object):
 
     def run(self, site, messages=None):

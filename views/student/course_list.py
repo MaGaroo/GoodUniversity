@@ -1,6 +1,7 @@
 from utils import show_messages, choose_from_menu, paginator, pprint_table
 
 
+# prints a list containing courses that current student is passing
 class StudentCourseListView(object):
 
     def run(self, site, messages=None):

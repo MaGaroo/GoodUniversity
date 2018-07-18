@@ -3,6 +3,7 @@ import copy
 from utils import show_messages, paginator, choose_from_menu, get_input, pprint_table
 
 
+# shows the manager a list of non-verified users and lets the manager to verify or delete them
 class NewUsersListView(object):
 
     def run(self, site, messages=None):

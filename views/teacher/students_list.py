@@ -1,6 +1,7 @@
 from utils import show_messages, paginator, choose_from_menu, pprint_table
 
 
+# this view lets the teachers to see a list of all students in the department
 class StudentsListView(object):
 
     def run(self, site, messages=None):

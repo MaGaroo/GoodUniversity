@@ -1,6 +1,7 @@
 from utils import show_messages, paginator, choose_from_menu, pprint_table
 
 
+# shows the manager a table containing all students in the department
 class StudentsListView(object):
 
     def run(self, site, messages=None):

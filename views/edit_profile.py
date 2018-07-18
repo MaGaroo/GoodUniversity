@@ -1,6 +1,7 @@
 from utils import get_input, show_messages
 
 
+# users edit their profile data in this view
 class EditProfileView(object):
     def run(self, site, messages=None):
         site.clear()

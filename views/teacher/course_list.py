@@ -1,6 +1,7 @@
 from utils import show_messages, choose_from_menu, paginator, pprint_table
 
 
+# prints the courses that current user(teacher) owns
 class TeacherCourseListView(object):
 
     def run(self, site, messages=None):

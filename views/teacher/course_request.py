@@ -2,6 +2,7 @@ from models.course import Course
 from utils import show_messages, get_input
 
 
+# the teachers can request to present a specific course in this view
 class CourseRequestView(object):
 
     def run(self, site, messages=None):

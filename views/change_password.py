@@ -1,6 +1,7 @@
 from utils import show_messages, get_secret_input
 
 
+# users change their password in this view
 class ChangePasswordView(object):
     def run(self, site, messages=None):
         site.clear()

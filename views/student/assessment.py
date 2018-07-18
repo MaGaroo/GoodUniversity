@@ -3,6 +3,7 @@ import copy
 from utils import show_messages, paginator, choose_from_menu, pprint_table, get_input
 
 
+# shows the students a list containing all of the teachers and lets the students to rate teachers
 class AssessmentView(object):
 
     def run(self, site, messages=None):
@@ -38,7 +39,8 @@ class AssessmentView(object):
                 teacher_row -= 1
                 if teacher_row < 0 or teacher_row >= len(teacher_list[page_number]):
                     return ['Invalid row number!']
-                rate = get_input('How do you rate this teacher?\nChoose a natural number from 1 to 5: ', output_type=int)
+                rate = get_input('How do you rate this teacher?\nChoose a natural number from 1 to 5: ',
+                                 output_type=int)
                 if rate < 1 or rate > 5:
                     return ['Invalid rating!']
                 teacher_list[page_number][teacher_row].rates[rate - 1] += 1

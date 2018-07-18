@@ -1,10 +1,9 @@
 import copy
 
-import time
-
 from utils import show_messages, paginator, choose_from_menu, get_input, pprint_table
 
 
+# runs when manager wants to accept or reject teachers' course requests
 class CourseRequestsListView(object):
 
     def run(self, site, messages=None):

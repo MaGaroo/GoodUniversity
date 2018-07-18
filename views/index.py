@@ -1,6 +1,7 @@
 from utils import choose_from_menu, show_messages
 
 
+# it's the first page of app, when we run it!
 class IndexView(object):
     MENU = {
         "Login": "/login/",

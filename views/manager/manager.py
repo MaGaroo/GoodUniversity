@@ -1,6 +1,7 @@
 from utils import show_messages, choose_from_menu
 
 
+# runs when a manager logs in to the system
 class ManagerView(object):
     MENU = {
         'Teachers': '/manager/teachers/',

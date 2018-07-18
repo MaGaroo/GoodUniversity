@@ -3,6 +3,7 @@ import copy
 from utils import show_messages, paginator, choose_from_menu, get_input, pprint_table
 
 
+# prints a list of available courses for a student and lets him/her to choose them for his new term
 class ChooseCourseView(object):
 
     def run(self, site, messages=None):

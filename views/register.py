@@ -2,6 +2,8 @@ from models.user import User
 from utils import get_input, get_secret_input, show_messages, choose_from_menu
 
 
+# when somebody wants to use the system and has not an account, he can create one in this view and
+# wait for the system manager to verify his account
 class RegisterView(object):
     def run(self, site, messages=None):
         site.clear()

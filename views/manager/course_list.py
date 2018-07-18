@@ -1,6 +1,7 @@
 from utils import show_messages, choose_from_menu, paginator, pprint_table
 
 
+# runs when manager wants to see the list of courses in the department
 class ManagerCourseListView(object):
 
     def run(self, site, messages=None):
@@ -18,7 +19,7 @@ class ManagerCourseListView(object):
                 print("There is no verified course in the system.")
             else:
                 pprint_table('Courses', course_list[page_number],
-                         foot='Page {} of {}'.format(page_number + 1, len(course_list)))
+                             foot='Page {} of {}'.format(page_number + 1, len(course_list)))
             choice = choose_from_menu(menu)
             if choice == 'Home':
                 site.state = '/manager/'

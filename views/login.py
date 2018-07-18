@@ -1,6 +1,7 @@
 from utils import get_input, get_secret_input, show_messages
 
 
+# users enter their username and password in this view to log in to the system
 class LoginView(object):
     def run(self, site, messages=None):
         site.clear()

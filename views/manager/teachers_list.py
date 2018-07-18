@@ -1,6 +1,7 @@
 from utils import show_messages, paginator, choose_from_menu, pprint_table
 
 
+# prints a table containing list of all teachers of the department
 class TeachersListView(object):
 
     def run(self, site, messages=None):

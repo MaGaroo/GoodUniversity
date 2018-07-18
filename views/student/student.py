@@ -1,6 +1,7 @@
 from utils import show_messages, choose_from_menu
 
 
+# shows the main menu after a student logs in to the system
 class StudentView(object):
     MENU = {
         'Courses': '/student/courses/',
