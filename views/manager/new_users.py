@@ -30,8 +30,10 @@ class NewUsersListView(object):
                 break
             elif choice == 'Previous Page':
                 page_number -= 1
+                site.clear()
             elif choice == 'Next Page':
                 page_number += 1
+                site.clear()
             else:
                 student_row = get_input("Enter row number of the student: ", output_type=int)
                 student_row -= 1

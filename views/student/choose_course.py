@@ -29,8 +29,10 @@ class ChooseCourseView(object):
                 break
             elif choice == 'Previous Page':
                 page_number -= 1
+                site.clear()
             elif choice == 'Next Page':
                 page_number += 1
+                site.clear()
             else:
                 course_row = get_input("Enter row number of the course to get it: ", output_type=int)
                 course_row -= 1

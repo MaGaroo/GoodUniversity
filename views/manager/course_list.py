@@ -25,7 +25,9 @@ class ManagerCourseListView(object):
                 break
             elif choice == 'Previous Page':
                 page_number -= 1
+                site.clear()
             elif choice == 'Next Page':
                 page_number += 1
+                site.clear()
 
         return None
