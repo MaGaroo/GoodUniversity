@@ -21,3 +21,9 @@ class Course(object):
             self.errors.append('The course must have an owner with teacher role.')
             return False
         return True
+
+    def get_columns_title(self):
+        return ['Title', 'Teacher', 'Serial No.', 'Verified']
+
+    def as_list(self):
+        return [self.title, self.owner.name, self.serial, 'Yes' if self.verified else 'No']

@@ -1,31 +1,61 @@
+from models.course import Course
 from models.user import User
 from states import state_list
 
 
 class Site(object):
+    def load_test(self):
+        admin = User(
+            username='admin',
+            password='admin',
+            role='Manager',
+            email='admin@localhost',
+            phone_number='09123456789',
+            serial='96000000',
+            verified=True
+        )
+        self.user_list.append(admin)
+
+        teacher = User(
+            username='2',
+            password='2',
+            name='Peyvandi',
+            role='Teacher',
+            email='2@localhost',
+            phone_number='09123456789',
+            serial=None,
+            verified=True
+        )
+        self.user_list.append(teacher)
+
+        student = User(
+            username='1',
+            password='1',
+            role='Student',
+            email='1@localhost',
+            phone_number='09123456789',
+            serial='96000001',
+            field='Math',
+            verified=True
+        )
+        self.user_list.append(student)
+
+        course = Course(
+            serial='40122',
+            owner=teacher,
+            title='Stats',
+            verified=False
+        )
+        self.course_list.append(course)
+        teacher.course_list.append(course)
+
     def __init__(self):
         self.active_user = None
         self.state = '/'
         self.user_list = []
         self.course_list = []
 
-        admin = User(username='admin',
-                     password='admin',
-                     role='Manager',
-                     email='admin@localhost',
-                     phone_number='09123456789',
-                     serial='96000000',
-                     verified=True)
-        self.user_list.append(admin)
-
-        student = User(username='1',
-                       password='1',
-                       role='Student',
-                       email='1@localhost',
-                       phone_number='09123456789',
-                       serial='96000001',
-                       verified=True)
-        self.user_list.append(student)
+        self.load_test()
 
     def run(self):
         messages = None
@@ -84,9 +114,8 @@ class Site(object):
         course.verified = True
 
     def reject_course(self, course):
-        for instance in self.course_list:
-            if instance == course:
-                self.course_list.remove(instance)
+        course.owner.course_list.remove(course)
+        self.course_list.remove(course)
 
     def accept_user(self, user):
         user.verified = True
@@ -97,7 +126,10 @@ class Site(object):
                 self.course_list.remove(instance)
 
     def get_current_courses(self, user):
-        return [course for course in user.course_list if course not in user.scores]
+        if user.role == 'Student':
+            return [course for course in user.course_list if course not in user.scores]
+        else:
+            return [course for course in user.course_list if course not in user.scores]
 
     def add_user(self, user):
         user.site = self
@@ -106,6 +138,7 @@ class Site(object):
     def add_course(self, course):
         course.site = self
         self.course_list.append(course)
+        course.owner.course_list.append(course)
 
     def get_user(self, username, password):
         for user in self.user_list:

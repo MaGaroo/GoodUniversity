@@ -18,7 +18,6 @@ class User(object):
         self.verified = verified
 
         self.errors = []
-        self.courses = []
         self.course_list = []
         self.scores = {}
         self.site = None

@@ -10,7 +10,7 @@ class AddScoreView(object):
         course = site.get_course(serial=course)
         if course is None:
             return ["No such course!"]
-        elif course.owner != site.active_user.pk:
+        elif course.owner != site.active_user:
             return ["You don't have permission to add score to this course!"]
         elif not course.verified:
             return ["This course hasn't been verified yet!"]
@@ -25,6 +25,6 @@ class AddScoreView(object):
 
         value = get_input('Score: ', output_type=int)
 
-        student.score[course.pk] = value
+        student.score[course] = value
 
         return None

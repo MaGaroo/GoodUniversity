@@ -38,8 +38,6 @@ def pprint_table(head, rows, foot=None, cols_title=None):
 
     rows = [cols_title] + rows
 
-    print(rows)
-
     max_len = [0] * len(rows[0])
     for row in rows:
         for i, word in enumerate(row):
