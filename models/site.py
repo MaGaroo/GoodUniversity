@@ -149,7 +149,7 @@ class Site(object):
     def get_available_courses(self):
         result = []
         for course in self.course_list:
-            if not self.active_user.has_course(course):
+            if not self.active_user.has_course(course) and course.verified:
                 result.append(course)
         return result
 
