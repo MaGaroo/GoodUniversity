@@ -10,6 +10,8 @@ class RegisterView(object):
         username = get_input('Username(left blank if you want): ', null=True)
         # TODO: change blank into null
         serial = get_input('Serial Number(left blank if you want): ', null=True)
+        name = get_input('Name: ')
+        field = get_input('Field: ')
         email = get_input('Email Address: ')
         role = choose_from_menu(User.ROLES, message="What's your role? ")
         phone_number = get_input('Phone Number: ')
@@ -19,12 +21,16 @@ class RegisterView(object):
         if password != password2:
             return ["Passwords do not match."]
 
-        user = User(username=username,
-                    serial=serial,
-                    email=email,
-                    role=role,
-                    phone_number=phone_number,
-                    password=password)
+        user = User(
+            username=username,
+            serial=serial,
+            email=email,
+            role=role,
+            phone_number=phone_number,
+            password=password,
+            name=name,
+            field=field
+        )
         if user.is_valid(site.user_list):
             site.add_user(user)
             site.state = '/'
