@@ -104,8 +104,8 @@ class User(object):
         sum = 0
         cnt = 0
         for i in range(5):
-            cnt += self.rates[cnt]
-            sum += self.rates[cnt] * cnt
+            cnt += self.rates[i]
+            sum += self.rates[i] * i
         if cnt == 0:
             return 5.
         return float(sum) / cnt + 1.
