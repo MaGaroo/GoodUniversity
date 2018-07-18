@@ -1,4 +1,5 @@
 from views.change_password import ChangePasswordView
+from views.edit_profile import EditProfileView
 from views.index import IndexView
 from views.login import LoginView
 from views.logout import LogoutView
@@ -22,14 +23,14 @@ state_list = {
     "/student/workbook/": WorkbookView,
     "/student/choose_course/": ChooseCourseView,
     "/student/assessment/": None,
-    "/student/edit_profile/": None,
+    "/student/edit_profile/": EditProfileView,
 
     "/teacher/": TeacherView,
     "/teacher/courses/": TeacherCourseListView,
     "/teacher/students/": StudentsListView,
     "/teacher/course_request/": CourseRequestView,
     "/teacher/scores/": AddScoreView,
-    "/teacher/edit_profile/": None,
+    "/teacher/edit_profile/": EditProfileView,
 
     "/manager/": ManagerView,
     "/manager/teachers/": TeachersListView,
@@ -38,6 +39,6 @@ state_list = {
     "/manager/course_requests/": CourseRequestsListView,
     "/manager/new_users/": NewUsersListView,
     "/manager/best_students/": BestStudentsView,
-    "/manager/edit_profile/": None,
+    "/manager/edit_profile/": EditProfileView,
 
 }
