@@ -16,8 +16,12 @@ class WorkbookView(object):
                 menu['Previous Page'] = '/student/workbook/'
             if page_number + 1 < len(course_list):
                 menu['Next Page'] = '/student/workbook/'
-            pprint_table('Workbook', course_list[page_number],
-                         foot='Page {} of {}'.format(page_number + 1, len(course_list)))
+            if len(course_list) == 0:
+                print("There is no passed course in the system.")
+            else:
+                pprint_table('Workbook', course_list[page_number],
+                             foot='Page {} of {}'.format(page_number + 1, len(course_list)),
+                             cols_title=site.active_user.get_score_columns_title())
             choice = choose_from_menu(menu.keys())
             if choice == 'Home':
                 site.state = menu[choice]

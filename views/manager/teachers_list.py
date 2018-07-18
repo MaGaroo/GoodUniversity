@@ -6,20 +6,24 @@ class TeachersListView(object):
     def run(self, site, messages=None):
         site.clear()
         show_messages(messages)
-        student_list = paginator(site.get_verified_teachers(), 20)
+        teacher_list = paginator(site.get_verified_teachers(), 20)
         page_number = 0
         while True:
-            pprint_table('Students', student_list[page_number],
-                         foot='Page {} of {}'.format(page_number + 1, len(student_list)))
+            if len(teacher_list) == 0:
+                print("There is no teacher in the system.")
+            else:
+                pprint_table('Students', teacher_list[page_number],
+                             foot='Page {} of {}'.format(page_number + 1, len(teacher_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
                 menu.append('Previous Page')
-            if page_number + 1 < len(student_list):
+            if page_number + 1 < len(teacher_list):
                 menu.append('Next Page')
-            menu.append('Select')
+            if len(teacher_list) > 0:
+                menu.append('Select')
             choice = choose_from_menu(menu)
             if choice == 'Home':
-                site.state = '/teacher/'
+                site.state = '/manager/'
                 break
             elif choice == 'Previous Page':
                 page_number -= 1

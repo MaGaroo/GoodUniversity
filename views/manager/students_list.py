@@ -9,14 +9,18 @@ class StudentsListView(object):
         student_list = paginator(site.get_verified_students(), 20)
         page_number = 0
         while True:
-            pprint_table('Students', student_list[page_number],
-                         foot='Page {} of {}'.format(page_number + 1, len(student_list)))
+            if len(student_list) == 0:
+                print("There is no student in the system.")
+            else:
+                pprint_table('Students', student_list[page_number],
+                             foot='Page {} of {}'.format(page_number + 1, len(student_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
                 menu.append('Previous Page')
             if page_number + 1 < len(student_list):
                 menu.append('Next Page')
-            menu.append('Select')
+            if len(student_list) > 0:
+                menu.append('Select')
             choice = choose_from_menu(menu)
             if choice == 'Home':
                 site.state = '/manager/'

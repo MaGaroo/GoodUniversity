@@ -14,7 +14,10 @@ class ManagerCourseListView(object):
                 menu.append('Previous Page')
             if page_number + 1 < len(course_list):
                 menu.append('Next Page')
-            pprint_table('Courses', course_list[page_number],
+            if len(course_list) == 0:
+                print("There is no course in the system.")
+            else:
+                pprint_table('Courses', course_list[page_number],
                          foot='Page {} of {}'.format(page_number + 1, len(course_list)))
             choice = choose_from_menu(menu)
             if choice == 'Home':

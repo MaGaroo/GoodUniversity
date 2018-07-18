@@ -9,15 +9,19 @@ class CourseRequestsListView(object):
         course_list = paginator(site.get_unverified_courses(), 20)
         page_number = 0
         while True:
-            pprint_table('Course Requests', course_list[page_number],
-                         foot='Page {} of {}'.format(page_number + 1, len(course_list)))
+            if len(course_list) == 0:
+                print("There is no course request in the system.\n")
+            else:
+                pprint_table('Course Requests', course_list[page_number],
+                             foot='Page {} of {}'.format(page_number + 1, len(course_list)))
             menu = ['Home']
             if page_number - 1 >= 0:
                 menu.append('Previous Page')
             if page_number + 1 < len(course_list):
                 menu.append('Next Page')
-            menu.append('Accept')
-            menu.append('Reject')
+            if len(course_list) > 0:
+                menu.append('Accept')
+                menu.append('Reject')
             choice = choose_from_menu(menu)
             if choice == 'Home':
                 site.state = '/manager/'

@@ -10,8 +10,10 @@ class LoginView(object):
         password = get_secret_input('Password: ')
         user = site.get_user(username, password)
         if user is None:
+            site.state = '/'
             return ["Bad username or password :("]
         if not user.verified:
+            site.state = '/'
             return ["This user hasn't been verified yet :("]
         else:
             site.active_user = user
