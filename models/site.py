@@ -22,7 +22,7 @@ class Site(object):
         teacher = User(
             username='2',
             password='2',
-            name='Peyvandi',
+            name='Moallem',
             role='Teacher',
             email='2@localhost',
             phone_number='09123456789',
@@ -39,7 +39,8 @@ class Site(object):
             phone_number='09123456789',
             serial='96000001',
             field='Math',
-            verified=True
+            verified=True,
+            name='Mammad Sarab'
         )
         self.user_list.append(student)
 
