@@ -49,7 +49,7 @@ class Site(object):
             serial='40122',
             owner=teacher,
             title='Stats',
-            verified=False
+            verified=True
         )
         self.course_list.append(course)
         teacher.course_list.append(course)
@@ -180,4 +180,10 @@ class Site(object):
         for course in self.course_list:
             if course.serial == serial:
                 return course
+        return None
+
+    def get_student(self, serial):
+        for user in self.user_list:
+            if user.role == 'Student' and user.serial == serial:
+                return user
         return None

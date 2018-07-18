@@ -98,6 +98,9 @@ class User(object):
     def has_course(self, course):
         return course in self.course_list or course in self.scores
 
+    def passed_course(self, course):
+        return course in self.scores
+
     # returns a list of student's current courses
     def get_current_courses(self):
         return [course for course in self.course_list if course not in self.scores]
