@@ -1,6 +1,9 @@
+import jdatetime
+
 from models.course import Course
 from models.user import User
 from states import state_list
+from utils import center
 
 
 class Site(object):
@@ -72,6 +75,7 @@ class Site(object):
         print('+' + 50 * '-' + '+')
         print('|' + 50 * ' ' + '|')
         print('|' + 21 * ' ' + 'natseloG' + ' ' * 21 + '|')
+        print('|{}|'.format(center(jdatetime.datetime.now().strftime("%d %b %Y || %H:%M"), 50)))
         print('|' + 50 * ' ' + '|')
         print('+' + 50 * '-' + '+')
 
