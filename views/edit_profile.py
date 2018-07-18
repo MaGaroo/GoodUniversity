@@ -19,4 +19,6 @@ class EditProfileView(object):
         phone_number = get_input('Phone Number: ', null=True)
         if phone_number is None:
             site.active_user.phone_number = phone_number
+
+        site.state = '/{}/'.format(site.active_user.role.lower())
         return None
