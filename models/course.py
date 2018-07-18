@@ -9,6 +9,7 @@ class Course(object):
         self.owner = owner
         self.errors = None
 
+    # is this instance valid?
     def is_valid(self, instance_list):
         self.errors = []
         if self.serial is None:
@@ -22,8 +23,10 @@ class Course(object):
             return False
         return True
 
+    # return title of columns
     def get_columns_title(self):
         return ['Title', 'Teacher', 'Serial No.', 'Verified']
 
+    # return this instance as a list
     def as_list(self):
         return [self.title, self.owner.name, self.serial, 'Yes' if self.verified else 'No']

@@ -77,6 +77,7 @@ class User(object):
 
         return True
 
+    # calculates average score of the student
     def get_average_score(self):
         if len(self.scores) == 0:
             return 20
@@ -85,21 +86,27 @@ class User(object):
             score_sum += self.scores[course]
         return float(score_sum) / len(self.scores)
 
+    # returns columns titles of workbook
     def get_score_columns_title(self):
         return ['Course', 'Score']
 
+    # returns student's workbook rows
     def get_scores(self):
         return [[course.title, self.scores[course]] for course in self.scores]
 
+    # determine whether this user has course or not
     def has_course(self, course):
         return course in self.course_list or course in self.scores
 
+    # returns a list of student's current courses
     def get_current_courses(self):
         return [course for course in self.course_list if course not in self.scores]
 
+    # add a course to students list
     def add_course(self, course):
         self.course_list.append(course)
 
+    # return rate of a teacher
     def get_average_rate(self):
         sum = 0
         cnt = 0
@@ -110,6 +117,7 @@ class User(object):
             return 5.
         return float(sum) / cnt + 1.
 
+    # return user as a list
     def as_list(self):
         if self.role == 'Student':
             return [self.name, self.serial, self.field, self.email, self.phone_number]
@@ -118,6 +126,7 @@ class User(object):
         if self.role == 'Manager':
             return [self.username, self.name, self.email]
 
+    # return titles of as_list members
     def get_columns_title(self):
         if self.role == 'Student':
             return ['Name', 'Student No.', 'Field', 'Email', 'Phone']

@@ -7,6 +7,7 @@ from utils import center
 
 
 class Site(object):
+    # loads some users and course to test
     def load_test(self):
         admin = User(
             username='admin',
@@ -61,17 +62,19 @@ class Site(object):
 
         self.load_test()
 
+    # program main loop
     def run(self):
         messages = None
         while True:
             view = state_list[self.state]()
             messages = view.run(self, messages)
-            # time.sleep(1)
 
+    # clears screen
     def clear(self):
         import os
         os.system('cls' if os.name == 'nt' else 'clear')
 
+    # prints header of site (contains project name and datetime)
     def print_header(self):
         print('+' + 50 * '-' + '+')
         print('|' + 50 * ' ' + '|')
@@ -80,6 +83,7 @@ class Site(object):
         print('|' + 50 * ' ' + '|')
         print('+' + 50 * '-' + '+')
 
+    # returns a list of verified students
     def get_verified_students(self):
         result = []
         for user in self.user_list:
@@ -87,6 +91,7 @@ class Site(object):
                 result.append(user)
         return result
 
+    # returns a list of verified teachers
     def get_verified_teachers(self):
         result = []
         for user in self.user_list:
@@ -94,6 +99,7 @@ class Site(object):
                 result.append(user)
         return result
 
+    # returns a list of verified courses
     def get_verified_courses(self):
         result = []
         for course in self.course_list:
@@ -101,6 +107,7 @@ class Site(object):
                 result.append(course)
         return result
 
+    # returns a list of non-verified users
     def get_unverified_users(self):
         result = []
         for user in self.user_list:
@@ -108,6 +115,7 @@ class Site(object):
                 result.append(user)
         return result
 
+    # returns a list of non-verified courses
     def get_unverified_courses(self):
         result = []
         for course in self.course_list:
@@ -115,42 +123,51 @@ class Site(object):
                 result.append(course)
         return result
 
+    # verifies a course
     def accept_course(self, course):
         course.verified = True
 
+    # rejects a course
     def reject_course(self, course):
         course.owner.course_list.remove(course)
         self.course_list.remove(course)
 
+    # verifies user
     def accept_user(self, user):
         user.verified = True
 
+    # rejects user
     def reject_user(self, user):
         for instance in self.course_list:
             if instance == user:
                 self.course_list.remove(instance)
 
+    # returns a list of courses. if user is teacher, returns the courses which he owns.
     def get_current_courses(self, user):
         if user.role == 'Student':
             return [course for course in user.course_list if course not in user.scores]
         else:
             return [course for course in user.course_list if course not in user.scores]
 
+    # adds a user
     def add_user(self, user):
         user.site = self
         self.user_list.append(user)
 
+    # adds course
     def add_course(self, course):
         course.site = self
         self.course_list.append(course)
         course.owner.course_list.append(course)
 
+    # gets a user with specified fields
     def get_user(self, username, password):
         for user in self.user_list:
             if user.username.lower() == username.lower() and user.password == password:
                 return user
         return None
 
+    # returns available courses
     def get_available_courses(self):
         result = []
         for course in self.course_list:
@@ -158,6 +175,7 @@ class Site(object):
                 result.append(course)
         return result
 
+    # returns a course by its serial
     def get_course(self, serial):
         for course in self.course_list:
             if course.serial == serial:
