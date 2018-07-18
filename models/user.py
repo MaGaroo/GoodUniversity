@@ -21,6 +21,7 @@ class User(object):
         self.course_list = []
         self.scores = {}
         self.site = None
+        self.rates = [0] * 5
 
     def is_valid(self, instance_list):
         if self.username is not None and type(self.username) != str:
@@ -99,8 +100,28 @@ class User(object):
     def add_course(self, course):
         self.course_list.append(course)
 
+    def get_average_rate(self):
+        sum = 0
+        cnt = 0
+        for i in range(5):
+            cnt += self.rates[cnt]
+            sum += self.rates[cnt] * cnt
+        if cnt == 0:
+            return 5.
+        return float(sum) / cnt + 1.
+
     def as_list(self):
-        return [self.username, self.serial, self.phone_number]
+        if self.role == 'Student':
+            return [self.name, self.serial, self.field, self.email, self.phone_number]
+        if self.role == 'Teacher':
+            return [self.name, self.get_average_rate(), self.field]
+        if self.role == 'Manager':
+            return [self.username, self.name, self.email]
 
     def get_columns_title(self):
-        return ['Username', 'Students No.', 'Phone']
+        if self.role == 'Student':
+            return ['Name', 'Student No.', 'Field', 'Email', 'Phone']
+        if self.role == 'Teacher':
+            return ['Name', 'Rate', 'Field']
+        if self.role == 'Manager':
+            return ['Username', 'Name', 'Email']

@@ -7,7 +7,7 @@ from views.manager import ManagerView, TeachersListView, ManagerCourseListView, 
     NewUsersListView, BestStudentsView
 from views.manager import StudentsListView as ManagerStudentsListView
 from views.register import RegisterView
-from views.student import StudentView, StudentCourseListView, WorkbookView, ChooseCourseView
+from views.student import StudentView, StudentCourseListView, WorkbookView, ChooseCourseView, AssessmentView
 from views.teacher import TeacherView, TeacherCourseListView, StudentsListView, CourseRequestView, AddScoreView
 
 state_list = {
@@ -22,7 +22,7 @@ state_list = {
     "/student/courses/": StudentCourseListView,
     "/student/workbook/": WorkbookView,
     "/student/choose_course/": ChooseCourseView,
-    "/student/assessment/": None,
+    "/student/assessment/": AssessmentView,
     "/student/edit_profile/": EditProfileView,
 
     "/teacher/": TeacherView,
